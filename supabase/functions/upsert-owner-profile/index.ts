@@ -5,6 +5,7 @@ import { createAnonClient, createUserClient } from "../_shared/common/supabaseCl
 import { OwnerFacade } from "../_shared/owner/owner.facade.ts"
 import { SupabaseOwnerRepository } from "../_shared/owner/owner.repository.ts"
 import { OwnerService } from "../_shared/owner/owner.service.ts"
+import { UpsertOwnerProfileRequestSchema } from "../_shared/owner/owner.schema.ts"
 
 const corsHeaders: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
@@ -34,12 +35,15 @@ Deno.serve(async (req) => {
     const anon = createAnonClient()
     const user = await getAuthenticatedUser(anon, token)
 
-    let body: unknown
+    let rawBody: unknown
     try {
-      body = await req.json()
+      rawBody = await req.json()
     } catch {
       return withCors(json({ error: "Invalid JSON body" }, { status: 400 }))
     }
+
+    const parsedBody = UpsertOwnerProfileRequestSchema.parse(rawBody)
+    
 
     const userClient = createUserClient(token)
     const ownerFacade = new OwnerFacade(
@@ -47,12 +51,13 @@ Deno.serve(async (req) => {
     )
 
     const owner = await ownerFacade.upsertOwnerProfile({
-      body,
+      body: parsedBody,
       authenticatedUserId: user.id,
     })
 
     return withCors(json({ owner }))
   } catch (err) {
+    console.log("❌ Error in upsert-owner-profile", err)
     const { body: errBody, status } = toErrorResponse(err)
     return withCors(json(errBody, { status }))
   }

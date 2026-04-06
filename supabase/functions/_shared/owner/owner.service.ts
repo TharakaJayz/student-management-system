@@ -11,11 +11,8 @@ export class OwnerService {
    */
   validateMobile(raw: string): string {
     const mobile = raw.trim()
-    if (mobile.length < 8) {
-      throw new AppError("mobile is too short", 400)
-    }
-    if (mobile.length > 20) {
-      throw new AppError("mobile is too long", 400)
+    if (mobile.length !== 10) {
+      throw new AppError("mobile must be 10 digits", 400)
     }
     if (!/^[0-9+()\s-]+$/.test(mobile)) {
       throw new AppError("mobile contains invalid characters", 400)

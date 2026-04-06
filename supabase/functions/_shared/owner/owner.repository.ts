@@ -2,6 +2,7 @@ import type { SupabaseClient } from "npm:@supabase/supabase-js@2.49.1"
 
 import type { Database } from "../../../../types/supabase.ts"
 import { AppError } from "../common/errors.ts"
+import { TABLES } from "../common/const.ts";
 
 export type OwnerRow = Database["public"]["Tables"]["owners"]["Row"]
 
@@ -12,10 +13,11 @@ export interface OwnerRepository {
 }
 
 export class SupabaseOwnerRepository implements OwnerRepository {
+  private readonly table = TABLES.OWNERS 
   constructor(private readonly supabase: SupabaseClient<Database>) {}
 
   async findById(id: string): Promise<OwnerRow | null> {
-    const { data, error } = await this.supabase.from("owners").select("*").eq("id", id).maybeSingle()
+    const { data, error } = await this.supabase.from(this.table).select("*").eq("id", id).maybeSingle()
 
     if (error) {
       throw new AppError(error.message, 400)
@@ -26,7 +28,7 @@ export class SupabaseOwnerRepository implements OwnerRepository {
 
   async insert(row: { id: string; name: string; mobile: string }): Promise<OwnerRow> {
     const { data, error } = await this.supabase
-      .from("owners")
+      .from(this.table)
       .insert({ id: row.id, name: row.name, mobile: row.mobile })
       .select("*")
       .single()
@@ -43,7 +45,7 @@ export class SupabaseOwnerRepository implements OwnerRepository {
 
   async update(id: string, patch: { name: string; mobile: string }): Promise<OwnerRow> {
     const { data, error } = await this.supabase
-      .from("owners")
+      .from(this.table)
       .update({ name: patch.name, mobile: patch.mobile })
       .eq("id", id)
       .select("*")
