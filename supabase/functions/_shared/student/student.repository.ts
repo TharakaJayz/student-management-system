@@ -16,10 +16,14 @@ export interface StudentRepository {
     grade: string
     imageUrl: string
   }): Promise<StudentRow | null>
+  findInstituteIdByOwnerId(ownerId: string): Promise<string | null>
+  isStudentEnrolledInInstitute(params: { studentId: string; instituteId: string }): Promise<boolean>
+  createStudentInstituteEnrollment(params: { studentId: string; instituteId: string }): Promise<void>
 }
 
 export class SupabaseStudentRepository implements StudentRepository {
-  private readonly table = TABLES.STUDENTS
+  private readonly studentsTable = TABLES.STUDENTS
+  private readonly institutesTable = TABLES.INSTITUTES
 
   constructor(private readonly supabase: SupabaseClient<Database>) {}
 
@@ -32,7 +36,7 @@ export class SupabaseStudentRepository implements StudentRepository {
     }
 
     const { data, error } = await this.supabase
-      .from(this.table)
+      .from(this.studentsTable)
       .insert(insertPayload)
       .select("*")
       .single()
@@ -52,7 +56,7 @@ export class SupabaseStudentRepository implements StudentRepository {
     imageUrl: string
   }): Promise<StudentRow | null> {
     const { data, error } = await this.supabase
-      .from(this.table)
+      .from(this.studentsTable)
       .update({
         name: params.name,
         age: params.age,
@@ -68,5 +72,49 @@ export class SupabaseStudentRepository implements StudentRepository {
     }
 
     return data
+  }
+
+  async findInstituteIdByOwnerId(ownerId: string): Promise<string | null> {
+    const { data, error } = await this.supabase
+      .from(this.institutesTable)
+      .select("id")
+      .eq("owner_id", ownerId)
+      .order("created_at", { ascending: true })
+      .limit(1)
+      .maybeSingle()
+
+    if (error) {
+      throw new AppError(error.message, 400)
+    }
+
+    return data?.id ?? null
+  }
+
+  async isStudentEnrolledInInstitute(params: { studentId: string; instituteId: string }): Promise<boolean> {
+    const { data, error } = await this.supabase
+      .from("student_institute_enrollments")
+      .select("student_id")
+      .eq("student_id", params.studentId)
+      .eq("institute_id", params.instituteId)
+      .maybeSingle()
+
+    if (error) {
+      throw new AppError(error.message, 400)
+    }
+
+    return Boolean(data)
+  }
+
+  async createStudentInstituteEnrollment(params: { studentId: string; instituteId: string }): Promise<void> {
+    const payload: Database["public"]["Tables"]["student_institute_enrollments"]["Insert"] = {
+      student_id: params.studentId,
+      institute_id: params.instituteId,
+    }
+
+    const { error } = await this.supabase.from("student_institute_enrollments").insert(payload)
+
+    if (error) {
+      throw new AppError(error.message, 400)
+    }
   }
 }

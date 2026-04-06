@@ -5,9 +5,34 @@ import { StudentModel } from "./student.model.ts"
 export class StudentService {
   constructor(private readonly studentRepository: StudentRepository) {}
 
-  createStudent(params: { name: string; age: number; grade: string; imageUrl: string }): Promise<StudentRow> {
+  async createStudent(params: {
+    ownerId: string
+    name: string
+    age: number
+    grade: string
+    imageUrl: string
+  }): Promise<StudentRow> {
+    const instituteId = await this.studentRepository.findInstituteIdByOwnerId(params.ownerId)
+    if (!instituteId) {
+      throw new AppError("Institute not found for this owner", 404)
+    }
+
     const student = StudentModel.create(params)
-    return this.studentRepository.create(student)
+    const created = await this.studentRepository.create(student)
+
+    const isAlreadyEnrolled = await this.studentRepository.isStudentEnrolledInInstitute({
+      studentId: created.id,
+      instituteId,
+    })
+
+    if (!isAlreadyEnrolled) {
+      await this.studentRepository.createStudentInstituteEnrollment({
+        studentId: created.id,
+        instituteId,
+      })
+    }
+
+    return created
   }
 
   async updateStudent(params: {

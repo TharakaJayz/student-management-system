@@ -6,6 +6,7 @@ export class StudentFacade {
 
   createStudent(params: { body: CreateStudentRequest; authenticatedUserId: string }) {
     return this.studentService.createStudent({
+      ownerId: params.authenticatedUserId,
       name: params.body.name,
       age: params.body.age,
       grade: params.body.grade,
