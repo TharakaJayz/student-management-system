@@ -1,20 +1,26 @@
-import { AppError } from "../common/errors.ts"
-import { CreateInstituteRequestSchema } from "./institute.schema.ts"
+import type {
+  CreateInstituteRequest,
+  UpdateInstituteRequest,
+} from "./institute.schema.ts"
 import type { InstituteService } from "./institute.service.ts"
 
 export class InstituteFacade {
   constructor(private readonly instituteService: InstituteService) {}
 
-  createInstitute(params: { body: unknown; authenticatedUserId: string }) {
-    const parsedBody = CreateInstituteRequestSchema.safeParse(params.body)
-    if (!parsedBody.success) {
-      throw new AppError("Validation failed", 400, parsedBody.error.flatten())
-    }
-
+  createInstitute(params: { body: CreateInstituteRequest; authenticatedUserId: string }) {
     return this.instituteService.createInstitute({
-      name: parsedBody.data.name,
-      address: parsedBody.data.address,
-      ownerId: parsedBody.data.ownerId,
+      name: params.body.name,
+      address: params.body.address,
+      ownerId: params.authenticatedUserId,
+    })
+  }
+
+  updateInstitute(params: { body: UpdateInstituteRequest; authenticatedUserId: string }) {
+    return this.instituteService.updateInstitute({
+      instituteId: params.body.instituteId,
+      name: params.body.name,
+      address: params.body.address,
+      ownerId: params.authenticatedUserId,
     })
   }
 }

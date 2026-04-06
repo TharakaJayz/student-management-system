@@ -410,3 +410,22 @@ enabled = true
 verify_jwt = false
 import_map = "./functions/import_map.json"
 entrypoint = "./functions/upsert-owner-profile/index.ts"
+
+
+[functions.update-institute]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/update-institute/index.ts"
+
+[functions.create-student]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-student/index.ts"
+
+[functions.update-student]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/update-student/index.ts"
