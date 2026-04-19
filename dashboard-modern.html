@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educa Dashboard - Modern Mock</title>
+  <link rel="stylesheet" href="dashboard-modern.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">Educa</div>
+
+      <div class="search-box">
+        <span class="icon">⌕</span>
+        <input type="text" placeholder="Search">
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item active" href="#">Dashboard</a>
+        <a class="menu-item" href="#">Students</a>
+        <a class="menu-item" href="#">Classes</a>
+        <a class="menu-item" href="#">Teachers</a>
+        <a class="menu-item" href="#">Institute Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div></div>
+        <button class="avatar-btn" aria-label="Profile">
+          <span>👤</span>
+        </button>
+      </header>
+
+      <section class="card attendance-card">
+        <div class="card-head">
+          <h2>Today Attendance</h2>
+          <span>Monday</span>
+        </div>
+        <div class="attendance-pills">
+          <div class="pill present">Present: 420</div>
+          <div class="pill absent">Absent: 60</div>
+          <div class="pill rate">Attendance: 60%</div>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="card stat">
+          <p>Total Students</p>
+          <h3>12500</h3>
+        </article>
+        <article class="card stat">
+          <p>Total Classes</p>
+          <h3>52</h3>
+        </article>
+        <article class="card stat">
+          <p>Total Teachers</p>
+          <h3>31</h3>
+        </article>
+      </section>
+
+      <section class="card chart-card">
+        <div class="card-head">
+          <h2>Monthly Income Summary by Grade</h2>
+          <select>
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+          </select>
+        </div>
+
+        <div class="chart-area">
+          <div class="bar-row">
+            <span class="label">Grade 05</span>
+            <div class="bar"><i style="width: 58%"></i></div>
+            <b>1300</b>
+          </div>
+          <div class="bar-row">
+            <span class="label">Grade 06</span>
+            <div class="bar"><i style="width: 84%"></i></div>
+            <b>1300</b>
+          </div>
+          <div class="bar-row">
+            <span class="label">Grade 07</span>
+            <div class="bar"><i style="width: 71%"></i></div>
+            <b>1300</b>
+          </div>
+          <div class="bar-row">
+            <span class="label">Grade 08</span>
+            <div class="bar"><i style="width: 49%"></i></div>
+            <b>1300</b>
+          </div>
+          <div class="bar-row">
+            <span class="label">Grade 09</span>
+            <div class="bar"><i style="width: 76%"></i></div>
+            <b>1300</b>
+          </div>
+          <div class="bar-row">
+            <span class="label">Grade 10</span>
+            <div class="bar"><i style="width: 58%"></i></div>
+            <b>1300</b>
+          </div>
+        </div>
+
+        <p class="income-foot">This Month Income: <strong>$18,250</strong></p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

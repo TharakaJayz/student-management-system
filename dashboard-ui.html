@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management Dashboard UI</title>
+  <link rel="stylesheet" href="dashboard-ui.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">InsideBox</div>
+      <input class="search" type="text" placeholder="Search">
+      <nav>
+        <a class="active" href="#dashboard">Dashboard</a>
+        <a href="#students-route">Students</a>
+        <a href="#">Teachers</a>
+        <a href="#">Classes</a>
+        <a href="#attendance-route">Attendance</a>
+        <a href="#">Payments</a>
+        <a href="#institute-settings">Institute Settings</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header id="dashboard" class="topbar">
+        <div>
+          <h1>Welcome back, Emma!</h1>
+          <p>Simple v1 dashboard preview</p>
+        </div>
+        <div class="actions">
+          <button>Month: April</button>
+        </div>
+      </header>
+
+      <section class="kpi-grid">
+        <article class="card kpi">
+          <h3>Total Active Students</h3>
+          <p class="value">248</p>
+        </article>
+        <article class="card kpi">
+          <h3>Total Active Teachers</h3>
+          <p class="value">18</p>
+        </article>
+        <article class="card kpi">
+          <h3>Active Classes</h3>
+          <p class="value">32</p>
+        </article>
+        <article class="card kpi">
+          <h3>Pending Student Payments</h3>
+          <p class="value">46</p>
+        </article>
+      </section>
+
+      <section class="grid-two">
+        <article class="card">
+          <div class="card-head">
+            <h2>Weekly Income Summary by Class</h2>
+            <span>This Week Income: $1,820</span>
+          </div>
+          <div class="bars">
+            <div class="bar-row"><span>Math - Grade 8</span><div class="bar"><i style="width:78%"></i></div><b>$420</b></div>
+            <div class="bar-row"><span>Science - Grade 9</span><div class="bar"><i style="width:64%"></i></div><b>$350</b></div>
+            <div class="bar-row"><span>English - Grade 7</span><div class="bar"><i style="width:58%"></i></div><b>$300</b></div>
+            <div class="bar-row"><span>ICT - Grade 10</span><div class="bar"><i style="width:72%"></i></div><b>$390</b></div>
+            <div class="bar-row"><span>Commerce - Grade 11</span><div class="bar"><i style="width:52%"></i></div><b>$280</b></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2>Class Enrollment Overview</h2>
+            <span>Top 5 classes</span>
+          </div>
+          <ul class="enrollment-list">
+            <li><span>Math - Grade 8</span><small>32 / 40</small></li>
+            <li><span>Science - Grade 9</span><small>29 / 35</small></li>
+            <li><span>English - Grade 7</span><small>27 / 35</small></li>
+            <li><span>ICT - Grade 10</span><small>24 / 30</small></li>
+            <li><span>Commerce - Grade 11</span><small>21 / 30</small></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="grid-two">
+        <article class="card">
+          <div class="card-head">
+            <h2>Today Attendance</h2>
+            <span>Monday</span>
+          </div>
+          <div class="attendance">
+            <div class="pill present">Present: 201</div>
+            <div class="pill absent">Absent: 47</div>
+            <div class="pill neutral">Attendance: 81%</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2>Needs Attention</h2>
+            <span>Top pending items</span>
+          </div>
+          <ul class="attention-list">
+            <li><span>5 failed payments detected</span><a href="#">View</a></li>
+            <li><span>Arun K. - Pending for 2 classes</span><a href="#">View</a></li>
+            <li><span>Nethmi S. - Pending for 1 class</span><a href="#">View</a></li>
+            <li><span>Kasun R. - Pending for 1 class</span><a href="#">View</a></li>
+            <li><span>Upeksha D. - Pending for 1 class</span><a href="#">View</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="students-route" class="route-section">
+        <header class="topbar route-head">
+          <div>
+            <h1>Students</h1>
+            <p>Manage student profiles, category counts, and student listing</p>
+          </div>
+          <div class="actions">
+            <button>Institute: Educa Institute</button>
+          </div>
+        </header>
+
+        <section class="kpi-grid student-kpi-grid">
+          <article class="card kpi">
+            <h3>Total Active Students</h3>
+            <p class="value">248</p>
+          </article>
+          <article class="card kpi">
+            <h3>Primary Students (Grade 1 - 5)</h3>
+            <p class="value">104</p>
+          </article>
+          <article class="card kpi">
+            <h3>Middle Students (Grade 6 - 9)</h3>
+            <p class="value">92</p>
+          </article>
+          <article class="card kpi">
+            <h3>Secondary Students (Grade 10 - 13)</h3>
+            <p class="value">52</p>
+          </article>
+        </section>
+
+        <section class="grid-two student-manage-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>Add / Edit Student</h2>
+              <span>Based on `Student` type fields</span>
+            </div>
+            <form class="form-grid student-form-grid">
+              <label>
+                Mode
+                <select>
+                  <option>Add New Student</option>
+                  <option>Edit Existing Student</option>
+                </select>
+              </label>
+              <label>
+                Student ID (for edit)
+                <input type="text" placeholder="STU-1007">
+              </label>
+              <label>
+                Name
+                <input type="text" placeholder="Ayesha Perera">
+              </label>
+              <label>
+                Age
+                <input type="number" placeholder="14">
+              </label>
+              <label>
+                Grade
+                <select>
+                  <option>Grade 5</option>
+                  <option>Grade 8</option>
+                  <option>Grade 10</option>
+                </select>
+              </label>
+              <label>
+                Image URL
+                <input type="text" placeholder="https://example.com/student.jpg">
+              </label>
+              <label>
+                Is Active
+                <select>
+                  <option>true</option>
+                  <option>false</option>
+                </select>
+              </label>
+              <button type="button" class="primary-btn">Save Student</button>
+            </form>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <h2>Student Search & Filters</h2>
+              <span>Find students quickly</span>
+            </div>
+            <div class="student-filter-grid">
+              <label>
+                Search
+                <input type="text" placeholder="Search by ID or name">
+              </label>
+              <label>
+                Grade
+                <select>
+                  <option>All Grades</option>
+                  <option>Grade 1 - 5</option>
+                  <option>Grade 6 - 9</option>
+                  <option>Grade 10 - 13</option>
+                </select>
+              </label>
+              <label>
+                Category
+                <select>
+                  <option>All Categories</option>
+                  <option>Primary</option>
+                  <option>Middle</option>
+                  <option>Secondary</option>
+                </select>
+              </label>
+              <label>
+                Status
+                <select>
+                  <option>All</option>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </select>
+              </label>
+            </div>
+          </article>
+        </section>
+
+        <article class="card student-list-card">
+          <div class="card-head">
+            <h2>Student List</h2>
+            <span>Searchable and filterable table</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Grade</th>
+                  <th>Category</th>
+                  <th>Image URL</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>STU-1007</td>
+                  <td>Ayesha Perera</td>
+                  <td>14</td>
+                  <td>Grade 8</td>
+                  <td>Middle</td>
+                  <td>https://img.school/stu-1007.jpg</td>
+                  <td><span class="status-badge paid">Active</span></td>
+                  <td><button class="primary-btn table-btn">Edit</button></td>
+                </tr>
+                <tr>
+                  <td>STU-1012</td>
+                  <td>Kavin Silva</td>
+                  <td>10</td>
+                  <td>Grade 5</td>
+                  <td>Primary</td>
+                  <td>https://img.school/stu-1012.jpg</td>
+                  <td><span class="status-badge paid">Active</span></td>
+                  <td><button class="primary-btn table-btn">Edit</button></td>
+                </tr>
+                <tr>
+                  <td>STU-1045</td>
+                  <td>Chamara Weerasekara</td>
+                  <td>16</td>
+                  <td>Grade 11</td>
+                  <td>Secondary</td>
+                  <td>https://img.school/stu-1045.jpg</td>
+                  <td><span class="status-badge pending">Inactive</span></td>
+                  <td><button class="primary-btn table-btn">Edit</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="attendance-route" class="route-section">
+        <header class="topbar route-head">
+          <div>
+            <h1>Attendance Queue</h1>
+            <p>Select a class, mark attendance, and update physical payments</p>
+          </div>
+          <div class="actions">
+            <button>Date: 15 Apr 2026</button>
+          </div>
+        </header>
+
+        <article class="card attendance-filter-card">
+          <div class="attendance-filter-grid">
+            <label>
+              Class
+              <select>
+                <option>Math - Grade 8 | Ms. Perera | 4:00 PM - 6:00 PM | WEEKLY MONDAY</option>
+                <option>Science - Grade 9 | Mr. Fernando | 5:00 PM - 7:00 PM | WEEKLY WEDNESDAY</option>
+                <option>ICT - Grade 10 | Ms. Silva | 6:00 PM - 8:00 PM | WEEKLY FRIDAY</option>
+              </select>
+            </label>
+          </div>
+        </article>
+
+        <section class="kpi-grid attendance-kpi-grid">
+          <article class="card kpi">
+            <h3>Total Students in Class</h3>
+            <p class="value">40</p>
+          </article>
+          <article class="card kpi">
+            <h3>Marked Present</h3>
+            <p class="value">22</p>
+          </article>
+          <article class="card kpi">
+            <h3>Need to Mark Attendance</h3>
+            <p class="value">18</p>
+          </article>
+          <article class="card kpi">
+            <h3>Payments Completed</h3>
+            <p class="value">17</p>
+          </article>
+          <article class="card kpi">
+            <h3>Payments Pending</h3>
+            <p class="value">23</p>
+          </article>
+        </section>
+
+        <article class="card attendance-search-card">
+          <label class="attendance-search-label">
+            Search Students
+            <input type="text" placeholder="Search by student name or ID">
+          </label>
+        </article>
+
+        <section class="attendance-main-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>Students for Selected Class</h2>
+              <span>Update payment and attendance in one place</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Student</th>
+                    <th>Attendance Status</th>
+                    <th>One Click Attendance</th>
+                    <th>Payment Status</th>
+                    <th>Paid Amount</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#01</td>
+                    <td>
+                      <strong>STU-1007</strong><br>
+                      Ayesha Perera
+                    </td>
+                    <td><span class="status-badge paid">Present</span></td>
+                    <td>
+                      <button class="primary-btn table-btn">Mark Present</button>
+                    </td>
+                    <td>
+                      <select>
+                        <option>Paid</option>
+                        <option>Pending</option>
+                        <option>Partial</option>
+                      </select>
+                    </td>
+                    <td>LKR 2,500</td>
+                    <td><button class="primary-btn table-btn">Update</button></td>
+                  </tr>
+                  <tr>
+                    <td>#02</td>
+                    <td>
+                      <strong>STU-1012</strong><br>
+                      Kavin Silva
+                    </td>
+                    <td><span class="status-badge pending">Not Marked</span></td>
+                    <td>
+                      <button class="primary-btn table-btn">Mark Present</button>
+                    </td>
+                    <td>
+                      <select>
+                        <option>Pending</option>
+                        <option>Paid</option>
+                        <option>Partial</option>
+                      </select>
+                    </td>
+                    <td><input type="number" placeholder="0"></td>
+                    <td><button class="primary-btn table-btn">Save</button></td>
+                  </tr>
+                  <tr>
+                    <td>#03</td>
+                    <td>
+                      <strong>STU-1002</strong><br>
+                      Nethmi Sandamini
+                    </td>
+                    <td><span class="status-badge pending">Not Marked</span></td>
+                    <td>
+                      <button class="primary-btn table-btn">Mark Present</button>
+                    </td>
+                    <td>
+                      <select>
+                        <option>Pending</option>
+                        <option>Paid</option>
+                        <option>Partial</option>
+                      </select>
+                    </td>
+                    <td>LKR 0</td>
+                    <td><button class="primary-btn table-btn">Update</button></td>
+                  </tr>
+                  <tr>
+                    <td>#04</td>
+                    <td>
+                      <strong>STU-1045</strong><br>
+                      Chamara Weerasekara
+                    </td>
+                    <td><span class="status-badge pending">Not Marked</span></td>
+                    <td>
+                      <button class="primary-btn table-btn">Mark Present</button>
+                    </td>
+                    <td>
+                      <select>
+                        <option>Partial</option>
+                        <option>Paid</option>
+                        <option>Pending</option>
+                      </select>
+                    </td>
+                    <td><input type="number" value="1000"></td>
+                    <td><button class="primary-btn table-btn">Update</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <section id="institute-settings" class="route-section">
+        <header class="topbar route-head">
+          <div>
+            <h1>Institute Settings</h1>
+            <p>Manage classrooms and subjects (UI planning view)</p>
+          </div>
+          <div class="actions">
+            <button>Institute: Educa Institute</button>
+          </div>
+        </header>
+
+        <section class="kpi-grid settings-kpi-grid">
+          <article class="card kpi">
+            <h3>Total Classrooms</h3>
+            <p class="value">8</p>
+          </article>
+          <article class="card kpi">
+            <h3>Total Subjects</h3>
+            <p class="value">12</p>
+          </article>
+          <article class="card kpi">
+            <h3>Air Conditioned Rooms</h3>
+            <p class="value">5</p>
+          </article>
+          <article class="card kpi">
+            <h3>Most Used Medium</h3>
+            <p class="value">ENGLISH</p>
+          </article>
+        </section>
+
+        <section class="grid-two settings-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>Add ClassRoom</h2>
+              <span>Based on ClassRoom type</span>
+            </div>
+            <form class="form-grid">
+              <label>
+                ClassRoom Name
+                <input type="text" placeholder="Room A">
+              </label>
+              <label>
+                Location
+                <input type="text" placeholder="First Floor">
+              </label>
+              <label>
+                Capacity
+                <input type="number" placeholder="40">
+              </label>
+              <label>
+                Air Conditioned
+                <select>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </label>
+              <button type="button" class="primary-btn">Save ClassRoom</button>
+            </form>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <h2>Add Subject</h2>
+              <span>Based on Subject type</span>
+            </div>
+            <form class="form-grid">
+              <label>
+                Subject Name
+                <input type="text" placeholder="Mathematics">
+              </label>
+              <label>
+                Medium
+                <select>
+                  <option>ENGLISH</option>
+                  <option>SINHALA</option>
+                </select>
+              </label>
+              <button type="button" class="primary-btn">Save Subject</button>
+            </form>
+          </article>
+        </section>
+
+        <section class="grid-two settings-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>ClassRoom List</h2>
+              <span>Simple preview table</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Capacity</th>
+                    <th>A/C</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Room A</td>
+                    <td>First Floor</td>
+                    <td>40</td>
+                    <td><span class="status-badge paid">Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Room B</td>
+                    <td>Second Floor</td>
+                    <td>35</td>
+                    <td><span class="status-badge pending">No</span></td>
+                  </tr>
+                  <tr>
+                    <td>Room C</td>
+                    <td>Main Block</td>
+                    <td>50</td>
+                    <td><span class="status-badge paid">Yes</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <h2>Subject List</h2>
+              <span>Simple preview table</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Medium</th>
+                    <th>Active</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mathematics</td>
+                    <td>ENGLISH</td>
+                    <td><span class="status-badge paid">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>Science</td>
+                    <td>SINHALA</td>
+                    <td><span class="status-badge paid">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>ICT</td>
+                    <td>ENGLISH</td>
+                    <td><span class="status-badge pending">Draft</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,390 @@
+UI Uniqueness Prompt Guidelines (Modern + Consistent)
+
+Purpose
+- Use this file as a checklist/template when asking AI to build UI.
+- The more specific your inputs, the more unique and non-generic the output.
+- Fill only what matters for the current screen; keep the rest as defaults.
+
+==================================================
+1) PROJECT IDENTITY (Core Design DNA)
+==================================================
+Project/Product Name:
+Domain:
+Target Users:
+Brand Personality (pick 2-4):
+- modern
+- premium
+- minimal
+- academic
+- playful
+- professional
+- friendly
+- sharp/technical
+
+Tone of UI Copy:
+- concise / formal / casual / student-friendly / business-like
+
+Design Keywords (5-10 words max):
+- Example: "clean, trustworthy, efficient, calm, focused"
+
+What must feel unique in this product?
+- Example: "soft academic dashboard with clean data-heavy cards"
+
+==================================================
+2) VISUAL TOKENS (Design System Inputs)
+==================================================
+Color System
+- Primary:
+- Secondary:
+- Accent:
+- Success:
+- Warning:
+- Error:
+- Info:
+- Neutral scale preference (cool gray / warm gray / true gray):
+- Background style (plain / subtle tint / section contrast):
+
+Color Usage Rules
+- Max accent colors per page:
+- CTA button color:
+- Link color:
+- Card background style:
+- Avoid colors:
+
+Shape + Spacing
+- Border radius scale (small/medium/large values):
+- Spacing density (compact / balanced / airy):
+- Card padding preference:
+- Section gap preference:
+- Table row height preference:
+
+Shadows + Borders
+- Shadow style (none / soft / layered):
+- Border style (thin / none / emphasized):
+- Divider intensity (subtle / visible):
+
+Motion
+- Animation level (none / subtle / rich):
+- Hover style (color shift / elevation / border):
+- Transition speed (fast / normal / slow):
+
+==================================================
+3) TYPOGRAPHY RULES
+==================================================
+Font personality:
+- clean sans / geometric / rounded / editorial
+
+Heading style:
+- strong + compact / soft + spacious
+
+Body text style:
+- neutral / human / technical
+
+Type scale preference:
+- small and dense / medium / large and spacious
+
+Font weight style:
+- light / balanced / bold
+
+Text hierarchy rules:
+- H1 size:
+- H2 size:
+- Body size:
+- Caption size:
+- Number/KPI emphasis style:
+
+==================================================
+4) LAYOUT PERSONALITY
+==================================================
+Navigation pattern:
+- left sidebar + topbar
+- top nav only
+- hybrid
+
+Screen density:
+- data-dense
+- balanced
+- whitespace-heavy
+
+Grid preference:
+- 12-column / card stack / split-panels
+
+Section order priority:
+- KPIs first?
+- charts first?
+- tables first?
+- action panel first?
+
+Page structure consistency rules:
+- Header style:
+- Card style:
+- Table style:
+- Form style:
+
+==================================================
+5) COMPONENT STYLE LANGUAGE
+==================================================
+Buttons
+- style: solid / soft / ghost / outline
+- corner radius:
+- height:
+- icon usage:
+- primary vs secondary visual difference:
+
+Inputs
+- style: outlined / filled / underlined
+- focus state:
+- validation visuals:
+- placeholder tone:
+
+Cards
+- flat / outlined / shadowed
+- header pattern (title + action / title only):
+- data card style (KPI large number / mini trend / icon):
+
+Tables
+- compact / standard
+- row zebra (yes/no)
+- sticky header (yes/no)
+- action column style:
+
+Status badges
+- shape: pill / rounded rect
+- style: filled / subtle tint / outline
+- label casing: UPPER / Title / lower
+
+Modals/Drawers
+- width preference:
+- action area style:
+- close behavior expectations:
+
+Charts
+- preferred chart styles:
+- gridlines (none/light):
+- legend placement:
+- chart color constraints:
+
+==================================================
+6) PAGE-SPECIFIC CONTENT RULES
+==================================================
+For each page/screen define:
+- Page name:
+- Primary goal of page:
+- Top 3 user actions:
+- Data entities involved (from backend types):
+- Mandatory sections:
+- Optional sections:
+- Empty state message style:
+- Loading state style:
+- Error state style:
+
+Example (Institute Settings):
+- Goal: manage classrooms + subjects quickly
+- Mandatory sections:
+  - summary cards
+  - add classroom form
+  - add subject form
+  - classroom list table
+  - subject list table
+
+==================================================
+7) UX BEHAVIOR RULES (Non-visual but critical)
+==================================================
+Interaction style:
+- fast inline edits / modal-based edits / dedicated form pages
+
+Form behavior:
+- immediate validation / on submit only
+- required field marker style:
+- helper text style:
+
+Feedback patterns:
+- toast position/style:
+- success message tone:
+- error message tone:
+
+Filtering + Search:
+- always visible filters or collapsible
+- default sort:
+- reset behavior:
+
+Pagination:
+- page size defaults:
+- infinite scroll vs pagination:
+
+==================================================
+8) RESPONSIVENESS RULES
+==================================================
+Breakpoints preference:
+- mobile-first / desktop-first
+
+Mobile behavior:
+- sidebar -> drawer?
+- cards stack order:
+- table -> card transformation?
+
+Tablet behavior:
+- 2-column cards?
+- reduced chart details?
+
+Desktop behavior:
+- max content width:
+- sticky header/sidebar?
+
+==================================================
+9) ACCESSIBILITY + QUALITY RULES
+==================================================
+Accessibility expectations:
+- minimum contrast level
+- visible focus rings
+- keyboard navigable controls
+- clear form labels
+
+Readability rules:
+- avoid tiny text
+- avoid low-contrast gray on gray
+- keep line lengths manageable
+
+Usability guardrails:
+- avoid clutter
+- avoid too many colors in one section
+- keep primary action obvious
+
+==================================================
+10) DO / DON'T LIST (Strongly Recommended)
+==================================================
+DO
+- Keep consistent spacing and radius across all pages
+- Keep state colors consistent (success/warning/error)
+- Keep one visual hierarchy pattern for all cards/tables
+- Prefer clarity over decorative elements
+
+DON'T
+- No random gradients unless requested
+- No glassmorphism unless requested
+- No neon palette unless requested
+- No mixed button styles in same section
+- No overly heavy shadows
+- No copying reference 1:1
+
+==================================================
+11) REFERENCE SCREENSHOT USAGE RULES
+==================================================
+For each screenshot provide:
+- File/link:
+- What to copy exactly (layout / spacing / component type):
+- What to adapt (colors / typography / icon set):
+- Similarity target (0-100%):
+- What to avoid copying:
+
+Recommended similarity range:
+- 50-70% (inspired, not cloned)
+
+==================================================
+12) BACKEND-TO-UI MAPPING INSTRUCTIONS
+==================================================
+Always include:
+- Data type names (example: ClassRoom, Subject, Class)
+- Which fields must be visible in list view
+- Which fields appear in create/edit form
+- Which fields are hidden/internal
+- Which fields are required
+- Expected status enums and badge colors
+
+Example:
+- Subject:
+  - list: name, medium, isActive
+  - form: name, medium
+- ClassRoom:
+  - list: name, location, capacity, isAirConditioned
+  - form: name, location, capacity, isAirConditioned
+
+==================================================
+13) IMPLEMENTATION CONSTRAINTS (for AI output)
+==================================================
+Specify upfront:
+- Tech stack (HTML/CSS, React, Tailwind, etc.)
+- Component framework (if any)
+- Icon library preference
+- Styling method (CSS modules / styled-components / plain CSS)
+- Route/file naming convention
+- Reusability requirement level
+- Whether mock/static data is acceptable
+
+==================================================
+14) DELIVERY FORMAT YOU CAN ASK FROM AI
+==================================================
+You can request one of these:
+- "Static mockup only (no JS)"
+- "Componentized UI only (no API integration)"
+- "UI + mock data wiring"
+- "UI + real API integration"
+- "Design tokens file + starter components"
+- "Single page first, then expand"
+
+==================================================
+15) ITERATION FEEDBACK TEMPLATE (Very Useful)
+==================================================
+After first draft, respond using:
+- Keep:
+- Change:
+- Remove:
+- Add:
+- Density: increase/decrease
+- Contrast: increase/decrease
+- Roundedness: increase/decrease
+- Spacing: tighter/looser
+- Similarity to reference: more/less
+
+==================================================
+16) MASTER PROMPT TEMPLATE (Copy/Paste)
+==================================================
+Build a [page name] UI for my Student Management project.
+
+Design direction:
+- Brand: [modern/minimal/premium/...]
+- Personality: [keywords]
+- Similarity to reference: [x]%
+- Do: [list]
+- Don't: [list]
+
+Visual system:
+- Primary color: [...]
+- Accent color: [...]
+- Radius: [...]
+- Spacing density: [...]
+- Shadow style: [...]
+- Typography style: [...]
+
+Layout:
+- Navigation: [sidebar/topbar]
+- Structure: [kpi + chart + table]
+- Priority sections: [list]
+
+Data mapping:
+- Entity: [ClassRoom/Subject/...]
+- Show fields in table: [...]
+- Show fields in form: [...]
+- Required fields: [...]
+
+Implementation constraints:
+- Use: [HTML/CSS or React...]
+- Keep simple/no backend integration for now.
+- Make it responsive for mobile + desktop.
+
+Output:
+- Create/update files in project.
+- Keep code readable and reusable.
+
+==================================================
+17) QUICK PROMPT QUALITY CHECK (Before Sending)
+==================================================
+Check yes/no:
+- Did I define brand personality?
+- Did I define colors/radius/spacing?
+- Did I define do/don't rules?
+- Did I define screenshot usage intent?
+- Did I map backend fields to UI sections?
+- Did I define tech/output constraints?
+
+If 5+ "yes", output quality is usually strong and unique.

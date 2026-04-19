@@ -10,21 +10,21 @@ enum Days {
 
 interface BaseDomain {
   id: string;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Institute extends BaseDomain {
   name: string;
   address: string;
-  ownerId: string;
+  owner_id: string;
 }
 
 interface Student extends BaseDomain {
   name: string;
   age: number;
-  imageUrl: string;         
+  image_url: string;
   grade: string;
 }
 
@@ -36,100 +36,109 @@ interface Owner extends BaseDomain {
 interface Teacher extends BaseDomain {
   name: string;
   mobile: string;
+  subject_id: string;
 }
 
 interface ClassRoom extends BaseDomain {
   name: string;
-  instituteId: string;
+  institute_id: string;
   location: string;
   capacity: number;
-  isAirConditioned: boolean;
+  is_air_conditioned: boolean;
 }
 
 interface Subject extends BaseDomain {
   name: string;
+  medium: "ENGLISH" | "SINHALA";
+}
+
+interface Teacher_Subject {
+  teacher_id: string;
+  subject_id: string;
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Class extends BaseDomain {
   name: string;
-  classRoomId: string;
-  instituteId: string;
-  teacherId: string;
-  subjectId: string;
+  class_room_id: string;
+  institute_id: string;
+  teacher_id: string;
+  subject_id: string;
   grade: string;
-  startTime: number;
-  endTime: number;
+  start_time: number;
+  end_time: number;
   frequency: "WEEKLY" | "OTHER";
   day: Days;
-  classFee: number;
+  class_fee: number;
 }
 
 interface Student_Class {
-  studentId: string; //fk
-  classId: string; //fk
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  student_id: string; //fk
+  class_id: string; //fk
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Student_subject {
-  studentId: string; //fk
-  subjectId: string; //fk
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  student_id: string; //fk
+  subject_id: string; //fk
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Student_class_attendances {
-  studentId: string;
-  classId: string;
-  instituteId: string;
-  attendanceDate: number;
-  isPresent: boolean;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  student_id: string;
+  class_id: string;
+  attendance_date: number;
+  is_present: boolean;
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Student_class_monthly_payments {
-  billingMonth: string; 
-  studentId: string;
+  billing_month: string;
+  student_id: string;
   grade: string;
-  classId: string;
-  instituteId: string;
-  amountDue: number;
-  paymentAmount: number;
-  paymentStatus: "PENDING" | "PAID" | "FAILED";
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  class_id: string;
+  institute_id: string;
+  amount_due: number;
+  payment_amount: number;
+  payment_status: "PENDING" | "PAID" | "FAILED";
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Teacher_class_monthly_payments {
-    instituteId: string;
-    teacherId: string;
-    classId: string;
-    billingMonth: string;
-    amountDue: number;
-    paymentAmount: number;
-    paymentStatus: "PENDING" | "PAID" | "FAILED";
-    isActive: boolean;
-    createdAt: Date;
-    updatedAt: Date;
+  institute_id: string;
+  teacher_id: string;
+  class_id: string;
+  billing_month: string;
+  amount_due: number;
+  payment_amount: number;
+  payment_status: "PENDING" | "PAID" | "FAILED";
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Student_institute_enrollments {
-  studentId: string;
-  instituteId: string;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  student_id: string;
+  institute_id: string;
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Teacher_institute_assignments {
-  teacherId: string;
-  instituteId: string;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  teacher_id: string;
+  institute_id: string;
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
 }

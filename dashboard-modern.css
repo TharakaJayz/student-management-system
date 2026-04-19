@@ -1,0 +1,324 @@
+:root {
+  --bg: #f3f4fb;
+  --panel: #ffffff;
+  --line: #e8e8f3;
+  --text: #1a1a27;
+  --muted: #75768a;
+  --primary: #5a63f4;
+  --primary-soft: #f0efff;
+  --present-bg: #c9f0d3;
+  --present-text: #167b35;
+  --absent-bg: #ffc9cf;
+  --absent-text: #c02f45;
+  --rate-bg: #ffe6c1;
+  --rate-text: #b5761f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+
+.sidebar {
+  background: #f7f7fc;
+  border-right: 1px solid var(--line);
+  padding: 18px 16px;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.search-box {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.icon {
+  color: #a1a2b3;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+.menu {
+  margin-top: 70px;
+  display: grid;
+  gap: 8px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: #66677c;
+  font-size: 15px;
+  padding: 12px 12px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-item.active {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.menu-item:hover {
+  background: #f2f3fa;
+}
+
+.main {
+  padding: 20px 24px 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar-btn {
+  margin-left: auto;
+  border: none;
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  background: #ececff;
+  color: var(--primary);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(31, 33, 65, 0.05);
+}
+
+.attendance-card {
+  padding: 20px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.card-head h2 {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -0.2px;
+}
+
+.card-head span {
+  color: #6e7084;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.attendance-pills {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  min-width: 220px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 34px;
+  padding: 16px 18px;
+  border-radius: 10px;
+}
+
+.present {
+  background: var(--present-bg);
+  color: var(--present-text);
+}
+
+.absent {
+  background: var(--absent-bg);
+  color: var(--absent-text);
+}
+
+.rate {
+  background: var(--rate-bg);
+  color: var(--rate-text);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.stat {
+  padding: 18px 20px;
+}
+
+.stat p {
+  margin: 0 0 8px;
+  color: #7d7f93;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.stat h3 {
+  margin: 0;
+  font-size: 40px;
+}
+
+.chart-card {
+  padding: 22px 20px;
+}
+
+.chart-card .card-head h2 {
+  font-size: 44px;
+}
+
+.chart-card .card-head span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+select {
+  min-width: 220px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 11px 12px;
+  font-size: 14px;
+  color: #4d4e63;
+}
+
+.chart-area {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 70px;
+  align-items: center;
+  gap: 10px;
+}
+
+.label {
+  font-size: 26px;
+  color: #41435c;
+}
+
+.bar {
+  width: 100%;
+  background: #edeefe;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #5f67fb 0%, #5d5adf 100%);
+}
+
+.bar-row b {
+  color: #808299;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.income-foot {
+  margin: 22px 0 2px;
+  text-align: right;
+  color: #75768a;
+  font-size: 34px;
+}
+
+.income-foot strong {
+  color: #3d3f57;
+}
+
+@media (max-width: 1300px) {
+  .card-head h2 {
+    font-size: 24px;
+  }
+
+  .card-head span {
+    font-size: 18px;
+  }
+
+  .pill {
+    font-size: 22px;
+    min-width: 180px;
+  }
+
+  .stat p {
+    font-size: 18px;
+  }
+
+  .stat h3 {
+    font-size: 28px;
+  }
+
+  .chart-card .card-head h2 {
+    font-size: 30px;
+  }
+
+  .label,
+  .bar-row b,
+  .income-foot {
+    font-size: 18px;
+  }
+
+  .bar {
+    height: 34px;
+  }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .menu {
+    margin-top: 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

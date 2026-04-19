@@ -1,0 +1,212 @@
+Student Management Dashboard UI Plan (Simple v1)
+
+Goal
+- Build a clean, simple dashboard-first UI for institute owners/staff.
+- Focus on core visibility (income, classes, students, teachers, attendance, payments).
+- Keep workflows minimal for first release.
+
+Primary Navigation (Sidebar)
+1) Dashboard
+2) Students
+3) Teachers
+4) Classes
+5) Attendance
+6) Payments
+7) Institute Settings
+
+--------------------------------------------------
+1) Dashboard (Main Home Screen)
+--------------------------------------------------
+Purpose
+- Give a quick weekly/monthly business summary.
+
+Top Summary Cards
+- Total Active Students
+  Include: count of active students in institute.
+- Total Active Teachers
+  Include: count of active teachers in institute.
+- Active Classes
+  Include: count of active classes.
+- Pending Student Payments
+  Include: count and total amount for pending records.
+
+Income Section (Important)
+- Title: Weekly Income Summary by Class
+  Include:
+  - Bar chart/list of each class name with total paid amount for current week.
+  - Optional small total at top: "This Week Income".
+  Data source:
+  - Student_class_monthly_payments.paymentAmount
+  - Group by classId, filter by instituteId and week range.
+
+Class Performance Snapshot
+- Title: Class Enrollment Overview
+  Include:
+  - Top 5 classes by enrolled student count.
+  - Simple progress bar style (% of classroom capacity).
+  Data source:
+  - Student_Class + Class + ClassRoom.capacity.
+
+Attendance Snapshot
+- Title: Today Attendance
+  Include:
+  - Present count
+  - Absent count
+  - Attendance %
+  Data source:
+  - Student_class_attendances for current date.
+
+Pending Actions Widget
+- Title: Needs Attention
+  Include:
+  - Students with pending payments (top 5).
+  - Failed payment records (if any).
+  Data source:
+  - Student_class_monthly_payments where status=PENDING/FAILED.
+
+--------------------------------------------------
+2) Students Page
+--------------------------------------------------
+Purpose
+- Manage and view student list quickly.
+
+Sections
+- Title: Student List
+  Include:
+  - Name, age, grade, active status.
+  - Search by name.
+  - Filter by grade.
+- Title: Student Profile (Simple Drawer/Detail)
+  Include:
+  - Basic info (name, image, age, grade).
+  - Enrolled classes list.
+  - Current month payment status summary.
+
+--------------------------------------------------
+3) Teachers Page
+--------------------------------------------------
+Purpose
+- Track teacher details and class assignments.
+
+Sections
+- Title: Teacher List
+  Include:
+  - Name, mobile, active status.
+  - Number of assigned classes.
+- Title: Teacher Detail
+  Include:
+  - Assigned classes.
+  - Current month payment status (PAID/PENDING/FAILED).
+
+--------------------------------------------------
+4) Classes Page
+--------------------------------------------------
+Purpose
+- Manage class schedule and operational details.
+
+Sections
+- Title: Class List
+  Include:
+  - Class name, subject, grade, teacher, classroom, day/time, class fee.
+  - Active student count.
+- Title: Weekly Timetable View
+  Include:
+  - Simple day-based list grouped by MONDAY-SUNDAY.
+  - Each item: class name, time, teacher.
+- Title: Class Detail
+  Include:
+  - Class metadata.
+  - Enrolled students list.
+  - Last 4 attendance sessions summary.
+
+--------------------------------------------------
+5) Attendance Page
+--------------------------------------------------
+Purpose
+- Capture and view attendance simply.
+
+Sections
+- Title: Mark Attendance
+  Include:
+  - Select class.
+  - Show student list with present/absent toggle.
+  - Save for selected date.
+- Title: Attendance History
+  Include:
+  - Date-wise records for selected class.
+  - Present %, absent % by date.
+
+--------------------------------------------------
+6) Payments Page
+--------------------------------------------------
+Purpose
+- Track student and teacher monthly payments.
+
+Sections
+- Title: Student Payments
+  Include:
+  - Billing month filter.
+  - Table: student, class, amount due, paid amount, status.
+  - Quick badges for PENDING / PAID / FAILED.
+- Title: Teacher Payments
+  Include:
+  - Billing month filter.
+  - Table: teacher, class, amount due, paid amount, status.
+- Title: Monthly Finance Summary
+  Include:
+  - Total student income (paid).
+  - Total teacher payout (paid).
+  - Net = income - payout.
+
+--------------------------------------------------
+7) Institute Settings
+--------------------------------------------------
+Purpose
+- Keep only essential institute configuration.
+
+Sections
+- Title: Institute Profile
+  Include:
+  - Institute name, address.
+- Title: Owner Info
+  Include:
+  - Owner name, mobile.
+
+--------------------------------------------------
+Global UI Rules (Simple)
+--------------------------------------------------
+- Keep one institute context per logged-in owner.
+- Use soft cards + table + basic bar/line chart components.
+- Use status colors:
+  - PAID: green
+  - PENDING: orange
+  - FAILED: red
+- Show empty states with helpful text (e.g., "No payments found for this month").
+- Mobile responsiveness: stack cards and convert wide tables into compact list cards.
+
+--------------------------------------------------
+Simple v1 Delivery Scope (Recommended)
+--------------------------------------------------
+Phase 1
+- Dashboard
+- Students list + detail
+- Classes list + detail
+- Student payments list
+
+Phase 2
+- Attendance marking + history
+- Teachers list + teacher payments
+- Institute settings polish
+
+--------------------------------------------------
+Dashboard Titles Quick List (for immediate UI build)
+--------------------------------------------------
+1) Weekly Income Summary by Class
+2) This Week Income
+3) Total Active Students
+4) Total Active Teachers
+5) Active Classes
+6) Pending Student Payments
+7) Class Enrollment Overview
+8) Today Attendance
+9) Needs Attention
