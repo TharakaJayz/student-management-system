@@ -15,19 +15,21 @@ interface BaseDomain {
   updated_at: Date;
 }
 
+// CREATED
 interface Institute extends BaseDomain {
   name: string;
   address: string;
   owner_id: string;
 }
 
+// CREATED
 interface Student extends BaseDomain {
   name: string;
   age: number;
   image_url: string;
   grade: string;
 }
-
+// CREATED
 interface Owner extends BaseDomain {
   name: string;
   mobile: string;
@@ -38,7 +40,7 @@ interface Teacher extends BaseDomain {
   mobile: string;
   subject_id: string;
 }
-
+// CREATED
 interface ClassRoom extends BaseDomain {
   name: string;
   institute_id: string;
@@ -46,7 +48,7 @@ interface ClassRoom extends BaseDomain {
   capacity: number;
   is_air_conditioned: boolean;
 }
-
+// CREATED
 interface Subject extends BaseDomain {
   name: string;
   medium: "ENGLISH" | "SINHALA";
@@ -127,6 +129,7 @@ interface Teacher_class_monthly_payments {
   updated_at: Date;
 }
 
+// CREATED
 interface Student_institute_enrollments {
   student_id: string;
   institute_id: string;

@@ -418,3 +418,21 @@ enabled = true
 verify_jwt = false
 import_map = "./functions/import_map.json"
 entrypoint = "./functions/update-student/index.ts"
+
+[functions.create-classroom]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-classroom/index.ts"
+
+[functions.update-classroom]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/update-classroom/index.ts"
+
+[functions.upsert-subject]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/upsert-subject/index.ts"

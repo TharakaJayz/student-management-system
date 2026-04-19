@@ -1,11 +1,11 @@
 import { getAuthenticatedUser, getBearerToken } from "../_shared/common/auth.ts"
-import { toErrorResponse } from "../_shared/common/errors.ts"
+import { AppError, toErrorResponse } from "../_shared/common/errors.ts"
 import { json, methodNotAllowed, withCors } from "../_shared/common/http.ts"
 import { createAnonClient, createUserClient } from "../_shared/common/supabaseClient.ts"
-import { OwnerFacade } from "../_shared/owner/owner.facade.ts"
-import { SupabaseOwnerRepository } from "../_shared/owner/owner.repository.ts"
-import { OwnerService } from "../_shared/owner/owner.service.ts"
-import { UpsertOwnerProfileRequestSchema } from "../_shared/owner/owner.schema.ts"
+import { ClassRoomFacade } from "../_shared/classroom/classroom.facade.ts"
+import { SupabaseClassRoomRepository } from "../_shared/classroom/classroom.repository.ts"
+import { UpdateClassRoomRequestSchema } from "../_shared/classroom/classroom.schema.ts"
+import { ClassRoomService } from "../_shared/classroom/classroom.service.ts"
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -28,22 +28,23 @@ Deno.serve(async (req) => {
       return withCors(json({ error: "Invalid JSON body" }, { status: 400 }))
     }
 
-    const parsedBody = UpsertOwnerProfileRequestSchema.parse(rawBody)
-    
+    const parsedBody = UpdateClassRoomRequestSchema.safeParse(rawBody)
+    if (!parsedBody.success) {
+      throw new AppError("Validation failed", 400, parsedBody.error.flatten())
+    }
 
     const userClient = createUserClient(token)
-    const ownerFacade = new OwnerFacade(
-      new OwnerService(new SupabaseOwnerRepository(userClient)),
+    const classRoomFacade = new ClassRoomFacade(
+      new ClassRoomService(new SupabaseClassRoomRepository(userClient)),
     )
 
-    const owner = await ownerFacade.upsertOwnerProfile({
-      body: parsedBody,
+    const classRoom = await classRoomFacade.updateClassRoom({
+      body: parsedBody.data,
       authenticatedUserId: user.id,
     })
 
-    return withCors(json({ owner }))
+    return withCors(json({ classRoom }))
   } catch (err) {
-    console.log("❌ Error in upsert-owner-profile", err)
     const { body: errBody, status } = toErrorResponse(err)
     return withCors(json(errBody, { status }))
   }

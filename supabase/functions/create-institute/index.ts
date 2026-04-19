@@ -1,25 +1,11 @@
 import { getAuthenticatedUser, getBearerToken } from "../_shared/common/auth.ts"
 import { AppError, toErrorResponse } from "../_shared/common/errors.ts"
-import { json, methodNotAllowed } from "../_shared/common/http.ts"
+import { json, methodNotAllowed, withCors } from "../_shared/common/http.ts"
 import { createAnonClient, createUserClient } from "../_shared/common/supabaseClient.ts"
 import { InstituteFacade } from "../_shared/institute/institute.facade.ts"
 import { CreateInstituteRequestSchema } from "../_shared/institute/institute.schema.ts"
 import { SupabaseInstituteRepository } from "../_shared/institute/institute.repository.ts"
 import { InstituteService } from "../_shared/institute/institute.service.ts"
-
-const corsHeaders: Record<string, string> = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-}
-
-function withCors(res: Response): Response {
-  const headers = new Headers(res.headers)
-  for (const [k, v] of Object.entries(corsHeaders)) {
-    headers.set(k, v)
-  }
-  return new Response(res.body, { status: res.status, headers })
-}
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {

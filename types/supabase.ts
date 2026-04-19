@@ -74,6 +74,50 @@ export interface Database {
           },
         ]
       }
+      class_rooms: {
+        Row: {
+          id: string
+          name: string
+          institute_id: string
+          location: string
+          capacity: number
+          is_air_conditioned: boolean
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          institute_id: string
+          location: string
+          capacity: number
+          is_air_conditioned?: boolean
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          institute_id?: string
+          location?: string
+          capacity?: number
+          is_air_conditioned?: boolean
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "class_rooms_institute_id_fkey"
+            columns: ["institute_id"]
+            isOneToOne: false
+            referencedRelation: "institutes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       students: {
         Row: {
           id: string
@@ -101,6 +145,33 @@ export interface Database {
           age?: number
           image_url?: string
           grade?: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      subjects: {
+        Row: {
+          id: string
+          name: string
+          medium: string
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          medium: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          medium?: string
           is_active?: boolean
           created_at?: string
           updated_at?: string

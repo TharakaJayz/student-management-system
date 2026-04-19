@@ -1,6 +1,7 @@
 export const TABLES = {
   OWNERS: "owners",
   INSTITUTES: "institutes",
+  CLASS_ROOMS: "class_rooms",
   CLASSES: "classes",
   STUDENTS: "students",
   TEACHERS: "teachers",
