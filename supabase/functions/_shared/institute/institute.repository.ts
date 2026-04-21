@@ -15,6 +15,7 @@ export interface InstituteRepository {
     name: string
     address: string
   }): Promise<InstituteRow | null>
+  findInstituteIdByOwnerId(ownerId: string): Promise<string | null>
 }
 
 export class SupabaseInstituteRepository implements InstituteRepository {
@@ -67,5 +68,21 @@ export class SupabaseInstituteRepository implements InstituteRepository {
     }
 
     return data
+  }
+
+  async findInstituteIdByOwnerId(ownerId: string): Promise<string | null> {
+    const { data, error } = await this.supabase
+      .from(this.table)
+      .select("id")
+      .eq("owner_id", ownerId)
+      .order("created_at", { ascending: true })
+      .limit(1)
+      .maybeSingle()
+
+    if (error) {
+      throw new AppError(error.message, 400)
+    }
+
+    return data?.id ?? null
   }
 }

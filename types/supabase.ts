@@ -151,6 +151,83 @@ export interface Database {
         }
         Relationships: []
       }
+      teachers: {
+        Row: {
+          id: string
+          name: string
+          mobile: string
+          subject_id: string
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          mobile: string
+          subject_id: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          mobile?: string
+          subject_id?: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teachers_subject_id_fkey"
+            columns: ["subject_id"]
+            isOneToOne: false
+            referencedRelation: "subjects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teacher_institute_assignments: {
+        Row: {
+          teacher_id: string
+          institute_id: string
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          teacher_id: string
+          institute_id: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          teacher_id?: string
+          institute_id?: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teacher_institute_assignments_institute_id_fkey"
+            columns: ["institute_id"]
+            isOneToOne: false
+            referencedRelation: "institutes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "teacher_institute_assignments_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: false
+            referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       subjects: {
         Row: {
           id: string

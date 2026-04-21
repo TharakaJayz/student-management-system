@@ -145,3 +145,5 @@ interface Teacher_institute_assignments {
   created_at: Date;
   updated_at: Date;
 }
+
+

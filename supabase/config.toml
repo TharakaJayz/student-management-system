@@ -436,3 +436,33 @@ enabled = true
 verify_jwt = false
 import_map = "./functions/import_map.json"
 entrypoint = "./functions/upsert-subject/index.ts"
+
+[functions.create-teacher]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-teacher/index.ts"
+
+[functions.update-teacher]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/update-teacher/index.ts"
+
+[functions.create-teacher-institute-assignment]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-teacher-institute-assignment/index.ts"
+
+[functions.update-teacher-institute-assignment]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/update-teacher-institute-assignment/index.ts"
+
+[functions.delete-teacher-institute-assignment]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/delete-teacher-institute-assignment/index.ts"
