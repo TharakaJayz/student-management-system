@@ -103,7 +103,7 @@ interface Student_class_attendances {
 }
 
 interface Student_class_monthly_payments {
-  billing_month: string;
+  billing_month: string; // YYYY-MM-DD
   student_id: string;
   grade: string;
   class_id: string;
@@ -115,12 +115,13 @@ interface Student_class_monthly_payments {
   created_at: Date;
   updated_at: Date;
 }
+// created from a scheduler once a month
 
 interface Teacher_class_monthly_payments {
   institute_id: string;
   teacher_id: string;
   class_id: string;
-  billing_month: string;
+  billing_month: string;// YYYY-MM-DD
   amount_due: number;
   payment_amount: number;
   payment_status: "PENDING" | "PAID" | "FAILED";

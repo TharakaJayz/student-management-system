@@ -466,3 +466,75 @@ enabled = true
 verify_jwt = false
 import_map = "./functions/import_map.json"
 entrypoint = "./functions/delete-teacher-institute-assignment/index.ts"
+
+[functions.create-student-institute-enrollment]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-student-institute-enrollment/index.ts"
+
+[functions.delete-student-institute-enrollment]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/delete-student-institute-enrollment/index.ts"
+
+[functions.create-student-subject]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-student-subject/index.ts"
+
+[functions.delete-student-subject]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/delete-student-subject/index.ts"
+
+[functions.create-class]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-class/index.ts"
+
+[functions.update-class]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/update-class/index.ts"
+
+[functions.create-student-class]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-student-class/index.ts"
+
+[functions.delete-student-class]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/delete-student-class/index.ts"
+
+[functions.create-student-class-monthly-payment]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/create-student-class-monthly-payment/index.ts"
+
+[functions.delete-student-class-monthly-payment]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/delete-student-class-monthly-payment/index.ts"
+
+[functions.update-student-class-monthly-payment]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/update-student-class-monthly-payment/index.ts"
+
+[functions.update-student-class-attendance]
+enabled = true
+verify_jwt = false
+import_map = "./functions/import_map.json"
+entrypoint = "./functions/update-student-class-attendance/index.ts"
